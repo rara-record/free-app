@@ -1,7 +1,13 @@
 import path from "node:path";
 import FastifyAutoload from "@fastify/autoload";
+import fastifySwagger from "@fastify/swagger";
+import fastifySwaggerUI from "@fastify/swagger-ui";
 import Fastify from "fastify";
+import { swaggerConfig, swaggerConfigUI } from "./config/swagger";
 import routes from "./routes";
+
+import { Type, type TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+
 const SECOND = 1000;
 
 export async function makeApp() {
@@ -12,7 +18,7 @@ export async function makeApp() {
     logger: true,
     pluginTimeout: 60 * SECOND,
     disableRequestLogging: true,
-  });
+  }).withTypeProvider<TypeBoxTypeProvider>();
 
   /**
    * 플러그인을 등록합니다
@@ -22,20 +28,15 @@ export async function makeApp() {
   });
 
   /**
+   * Swagger를 등록합니다
+   */
+  await app.register(fastifySwagger, swaggerConfig);
+  await app.register(fastifySwaggerUI, swaggerConfigUI);
+
+  /**
    * API 라우트를 등록합니다
    */
   await app.register(routes);
-
-  /**
-   * 헬스체크 엔드포인트를 등록합니다
-   *
-   * GET /healthz
-   */
-  app.get("/healthz", async () => {
-    return {
-      ok: true,
-    };
-  });
 
   /**
    * 모든 Fastify 플러그인이 준비될때까지 대기합니다

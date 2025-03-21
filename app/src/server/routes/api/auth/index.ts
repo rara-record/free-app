@@ -1,13 +1,20 @@
 import type { FastifyPluginAsync } from "fastify";
-import { UserService } from "../../../services/UserService";
+import { registerSchema } from "./shema";
 
 const authRoute: FastifyPluginAsync = async (fastify) => {
   fastify.post("/login", async () => {
-    const userId = await fastify.userService.getUserById();
-    console.log(userId);
+    return fastify.userService.login();
   });
 
-  fastify.post("register", async () => {});
+  fastify.post(
+    "register",
+    {
+      schema: registerSchema,
+    },
+    async () => {
+      return fastify.userService.register();
+    },
+  );
 };
 
 export default authRoute;

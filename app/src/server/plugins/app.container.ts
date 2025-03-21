@@ -2,7 +2,7 @@ import fp from "fastify-plugin";
 import { container } from "tsyringe";
 
 // 서비스 및 레포지토리 임포트
-import { UserService } from "../services/UserService";
+import UserService from "../services/UserService";
 
 declare module "fastify" {
   interface FastifyInstance {
