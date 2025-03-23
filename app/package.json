@@ -24,9 +24,11 @@
     "@fastify/swagger-ui": "^5.2.2",
     "@fastify/type-provider-typebox": "^5.1.0",
     "@mcansh/remix-fastify": "^4.0.6",
+    "@prisma/client": "6.5.0",
     "@react-router/fs-routes": "^7.2.0",
     "@react-router/node": "^7.2.0",
     "@sinclair/typebox": "^0.34.28",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "dotenv-safe": "^9.1.0",
     "extensionless": "^1.9.9",
@@ -42,6 +44,7 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.2.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -49,6 +52,7 @@
     "glob": "^11.0.1",
     "nodemon": "^3.1.9",
     "pino-pretty": "^7.0.0",
+    "prisma": "^6.5.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.7.3",
     "vite": "^6.2.0"
