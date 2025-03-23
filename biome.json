@@ -20,6 +20,6 @@
     "enabled": true
   },
   "files": {
-    "ignore": [".pnp.cjs"]
+    "ignore": ["dist/**", "node_modules/**", "src/prisma"]
   }
 }
