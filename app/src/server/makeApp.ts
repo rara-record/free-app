@@ -6,7 +6,7 @@ import Fastify from "fastify";
 import { swaggerConfig, swaggerConfigUI } from "./config/swagger";
 import routes from "./routes";
 
-import { Type, type TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+import type { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 
 const SECOND = 1000;
 
